@@ -14,6 +14,9 @@
     <ClInclude Include="libcompat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="endianess.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="libcompat.c">

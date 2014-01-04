@@ -29,27 +29,28 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <stdio.h>
 #include "utils.h"
 
-#ifdef USBMUXD_DAEMON
-# include "log.h"
-# define util_error(...) usbmuxd_log(LL_ERROR, __VA_ARGS__)
-#else
+/* me #ifdef USBMUXD_DAEMON
+#include "log.h"
+#define util_error(...) usbmuxd_log(LL_ERROR, __VA_ARGS__)
+#else */
 # define util_error(...) fprintf(stderr, __VA_ARGS__)
-#endif
+/* me #endif */
 
 #ifdef USBMUXD_DAEMON
 void fdlist_create(struct fdlist *list)
 {
 	list->count = 0;
 	list->capacity = 4;
-	list->owners = malloc(sizeof(*list->owners) * list->capacity);
-	list->fds = malloc(sizeof(*list->fds) * list->capacity);
+	list->owners = (fdowner *)malloc(sizeof(*list->owners) * list->capacity);
+	list->fds = (pollfd *)malloc(sizeof(*list->fds) * list->capacity);
 }
+
 void fdlist_add(struct fdlist *list, enum fdowner owner, int fd, short events)
 {
 	if(list->count == list->capacity) {
 		list->capacity *= 2;
-		list->owners = realloc(list->owners, sizeof(*list->owners) * list->capacity);
-		list->fds = realloc(list->fds, sizeof(*list->fds) * list->capacity);
+		list->owners = (fdowner *)realloc(list->owners, sizeof(*list->owners) * list->capacity);
+		list->fds = (pollfd *)realloc(list->fds, sizeof(*list->fds) * list->capacity);
 	}
 	list->owners[list->count] = owner;
 	list->fds[list->count].fd = fd;

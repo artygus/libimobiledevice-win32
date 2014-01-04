@@ -23,8 +23,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #ifndef __UTILS_H__
 #define __UTILS_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifdef USBMUXD_DAEMON
+
+#ifdef WIN32
+#ifndef _WINSOCKAPI_
+#include <winsock2.h>
+#include <windows.h>
+#endif
+#else
 #include <poll.h>
+#endif
 
 enum fdowner {
 	FD_LISTEN,
@@ -43,6 +55,7 @@ void fdlist_create(struct fdlist *list);
 void fdlist_add(struct fdlist *list, enum fdowner owner, int fd, short events);
 void fdlist_free(struct fdlist *list);
 void fdlist_reset(struct fdlist *list);
+
 #endif
 
 struct collection {
@@ -66,5 +79,9 @@ void collection_free(struct collection *col);
 #define ENDFOREACH \
 		} \
 	} while(0);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
