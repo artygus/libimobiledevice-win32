@@ -80,6 +80,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ideviceimagemounter", "libi
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "idevice-debug-client", "libimobiledevice-tools\idevice-debug-client\idevice-debug-client.vcxproj", "{80E14F4A-9707-4B30-9D63-306756A2E05C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6F26C69D-46EE-40AE-92E3-CD205B2C18E0} = {6F26C69D-46EE-40AE-92E3-CD205B2C18E0}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "imobiledeviceapp", "libimobiledevice-tools\imobiledeviceapp\imobiledeviceapp.csproj", "{B2F015FE-07F5-43AC-B6E6-DF8D0D4ADC66}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -95,6 +98,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "idevicebackup", "libimobile
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "idevicebackup2", "libimobiledevice-tools\idevicebackup2\idevicebackup2.vcxproj", "{98E67352-7104-464C-8774-149B704660A1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6F26C69D-46EE-40AE-92E3-CD205B2C18E0} = {6F26C69D-46EE-40AE-92E3-CD205B2C18E0}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "usbmuxd", "usbmuxd\usbmuxd.vcxproj", "{1339502C-C362-43AE-8059-59754A4195A4}"
 	ProjectSection(ProjectDependencies) = postProject
