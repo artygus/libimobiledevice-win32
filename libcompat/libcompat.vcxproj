@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="endianess.h" />
+    <ClInclude Include="endianness.h" />
     <ClInclude Include="libcompat.h" />
   </ItemGroup>
   <ItemGroup>

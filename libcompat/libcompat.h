@@ -12,7 +12,7 @@ extern "C"
 #include <winsock.h>
 #include <windows.h>
 #endif
-#include "endianess.h"
+#include "endianness.h"
 
 #if defined(_MSC_VER) || defined(_MSC_EXTENSIONS)
   #define DELTA_EPOCH_IN_MICROSECS  11644473600000000Ui64
