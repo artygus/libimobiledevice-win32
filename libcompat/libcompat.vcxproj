@@ -12,7 +12,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="endianness.h" />
+    <ClInclude Include="iocompat.h" />
     <ClInclude Include="libcompat.h" />
+    <ClInclude Include="netcompat.h" />
+    <ClInclude Include="stringcompat.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="libcompat.c" />

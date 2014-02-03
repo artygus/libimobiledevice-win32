@@ -44,7 +44,7 @@
 #include <libimobiledevice/notification_proxy.h>
 #include <libimobiledevice/afc.h>
 
-#include <libcompat.h>
+#include <stringcompat.h>
 
 #define MOBILEBACKUP_SERVICE_NAME "com.apple.mobilebackup"
 #define NP_SERVICE_NAME "com.apple.mobile.notification_proxy"

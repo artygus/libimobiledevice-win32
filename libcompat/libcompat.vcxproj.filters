@@ -17,6 +17,15 @@
     <ClInclude Include="endianness.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="stringcompat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="netcompat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="iocompat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="libcompat.c">

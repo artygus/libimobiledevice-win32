@@ -167,7 +167,7 @@ int create_socket(uint16_t port)
 		return -1;
 	}
 
-	if (setsockopt(sfd, SOL_SOCKET, SO_REUSEADDR, (const char *)(void*)&yes, sizeof(int)) == -1) {
+	if (setsockopt(sfd, SOL_SOCKET, SO_REUSEADDR, (const char *)&yes, sizeof(int)) == -1) {
 		perror("setsockopt()");
 		close_socket(sfd);
 		return -1;
