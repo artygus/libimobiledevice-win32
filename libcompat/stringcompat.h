@@ -22,55 +22,31 @@ extern "C"
 #define strcasecmp stricmp
 #endif
 
-// asprintf ?? https://github.com/XenonofArcticus/GLSL-Debugger/blob/master/GLSLCompiler/glslang/OSDependent/Windows/asprintf.h
-static int vasprintf(char **s, const char *format, va_list ap)
+// libimobiledevice/include/asprintf.h
+static int vasprintf(char **PTR, const char *TEMPLATE, va_list AP)
 {
-        /* Guess we need no more than 100 bytes. */
-        int n, size = 100;
-        va_list save_ap;
-
-        if ((*s = (char*) malloc(size)) == NULL)
-                return -1;
-        while (1) {
-                /* wwork on a copy of the va_list because of a bug
-                 in the vsnprintf implementation in x86_64 libc
-                 */
-#ifdef __va_copy
-                __va_copy(save_ap, ap);
-#else
-                save_ap = ap;
-#endif
-                /* Try to print in the allocated space. */
-                n = _vsnprintf(*s, size, format, save_ap);
-                va_end(save_ap);
-                /* If that worked, return the string. */
-                if (n > -1 && n < size) {
-                        return n;
-                }
-                /* Else try again with more space. */
-                if (n > -1) { /* glibc 2.1 */
-                        size = n + 1; /* precisely what is needed */
-                } else { /* glibc 2.0 */
-                        size *= 2; /* twice the old size */
-                }
-                if ((*s = (char*) realloc(*s, size)) == NULL) {
-                        return -1;
-                }
-        }
+    int res;
+    char buf[16000];
+    res = vsnprintf(buf, 16000, TEMPLATE, AP);
+    if (res > 0) {
+        *PTR = (char*)malloc(res+1);
+        res = vsnprintf(*PTR, res+1, TEMPLATE, AP);
+    }
+    return res;
 }
 
-static int asprintf(char **s, const char *format, ...)
+// libimobiledevice/include/asprintf.h
+static int asprintf(char **PTR, const char *TEMPLATE, ...)
 {
-        va_list vals;
-        int result;
-
-        va_start(vals, format);
-        result = vasprintf(s, format, vals);
-        va_end(vals);
-        return result;
+    int res;
+    va_list AP;
+    va_start(AP, TEMPLATE);
+    res = vasprintf(PTR, TEMPLATE, AP);
+    va_end(AP);
+    return res;
 }
 
-static char* strnstr(const char *s1, const char *s2, size_t n) {
+static char *strnstr(const char *s1, const char *s2, size_t n) {
   size_t len = strlen(s2);
   if (n >= len) {
     char c = *s2;
@@ -109,6 +85,15 @@ static char* stpcpy (char *dest, const char *source)
     /* Do nothing. */ ;
   return dest - 1;
 }
+
+// stpncpy from https://code.google.com/p/iphone-gcc/source/browse/trunk/gcc-4.2.3/libiberty/stpncpy.c?spec=svn4&r=4
+static char* stpncpy (char *dst, const char *src, size_t len)
+{ 
+  size_t n = strlen (src);
+  if (n > len)
+    n = len;
+  return strncpy (dst, src, len) + n;
+}  
 
 // http://www.opensource.apple.com/source/Libc/Libc-320/string/FreeBSD/strcasestr.c
 static char* strcasestr(const char *s, const char *find)
