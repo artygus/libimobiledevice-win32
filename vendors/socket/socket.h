@@ -46,6 +46,7 @@ int socket_create_unix(const char *filename);
 int socket_connect_unix(const char *filename);
 #endif
 int socket_create(uint16_t port);
+int socket_create(uint16_t port, int nonblocking);
 int socket_connect(const char *addr, uint16_t port);
 int socket_check_fd(int fd, fd_mode fdm, unsigned int timeout);
 int socket_accept(int fd, uint16_t port);
