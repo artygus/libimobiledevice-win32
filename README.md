@@ -4,5 +4,5 @@ Fork of libimobiledevice-win32 (https://github.com/storoj/libimobiledevice-win32
 ## Goal ##
 Use libimobiledevice-win32 to port 
 
-- ios-webkit-debug-proxy (https://github.com/google/ios-webkit-debug-proxy) to debug MobileSafari and UIWebViews of ios devices on windows machines
+- <del>ios-webkit-debug-proxy (https://github.com/google/ios-webkit-debug-proxy) to debug MobileSafari and UIWebViews of ios devices on windows machines</del>
 - usbmuxd (https://github.com/libimobiledevice/usbmuxd) to debug devices without iTunes
