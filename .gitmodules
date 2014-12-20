@@ -1,6 +1,6 @@
-[submodule ".\\usbmuxd"]
-	path = .\\usbmuxd
+[submodule "usbmuxd"]
+	path = usbmuxd
 	url = https://github.com/artygus/usbmuxd-win32
-[submodule ".\\ios-webkit-debug-proxy"]
-	path = .\\ios-webkit-debug-proxy
+[submodule "ios-webkit-debug-proxy"]
+	path = ios-webkit-debug-proxy
 	url = https://github.com/artygus/ios-webkit-debug-proxy-win32
